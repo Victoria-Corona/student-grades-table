@@ -9,6 +9,7 @@ class App{
   }
   handleGetGradesSuccess(grades){
     console.log("yes")
+    this.gradeTable.updateGrades(grades)
   }
   getGrades(){
     $.ajax({
