@@ -28,4 +28,28 @@ class GradeTable{
   onDeleteClick(deleteGrade){
     this.deleteGrade;
   }
+  renderGradeRow(data, deleteGrade){
+    function deleteGrade(data){
+      for(var indexData = 0; indexData < data.length; indexData++){
+        var trTwo = document.createElement("tr")
+        var tdFour = document.createElement("td");
+        var tdFive = document.createElement("td");
+        var tdSix = document.createElement("td");
+        var tdSeven = document.createElement("td");
+
+        var deleteButton = document.createElement("button");
+        deleteButton.classList.add("btn", "btn-danger");
+        deleteButton.addEventListener("click", deleteGrade(data.id));
+
+        tdFour.textContent = data[indexData].name;
+        tdFive.textContent = data[indexData].course;
+        tdSix.textContent = data[indexData].grade;
+        tdSeven.append(deleteButton);
+
+        trTwo.append(tdFour, tdFive, tdSix, tdSeven);
+        document.body.append(trTwo);
+      }
+
+    }
+  }
 }
