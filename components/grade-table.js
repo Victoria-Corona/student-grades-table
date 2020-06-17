@@ -29,6 +29,7 @@ class GradeTable{
     this.deleteGrade;
   }
   renderGradeRow(data, deleteGrade){
+    var tbodyTwo = document.querySelector("tbody");
     function deleteGrade(data){
       for(var indexData = 0; indexData < data.length; indexData++){
         var trTwo = document.createElement("tr")
@@ -47,7 +48,7 @@ class GradeTable{
         tdSeven.append(deleteButton);
 
         trTwo.append(tdFour, tdFive, tdSix, tdSeven);
-        document.body.append(trTwo);
+        tbodyTwo.append(trTwo);
       }
 
     }
