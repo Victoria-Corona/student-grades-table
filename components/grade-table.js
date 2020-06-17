@@ -26,12 +26,11 @@ class GradeTable{
       // tbody.appendChild(tr);
       this.renderGradeRow(grades[index], this.deleteGrade);
     }
-
-
     var pHidden = document.querySelector("p");
     if(grades.length === 0){
       pHidden.classList.remove("d-none")
     }
+    console.log(grades);
   }
   onDeleteClick(deleteGrade){
     this.deleteGrade = deleteGrade;
@@ -47,7 +46,8 @@ class GradeTable{
         var deleteButton = document.createElement("button");
         deleteButton.textContent = "DELETE";
         deleteButton.classList.add("btn", "btn-danger");
-        deleteButton.addEventListener("click", deleteGrade(data.id));
+        deleteButton.addEventListener("click", function(){
+        deleteGrade(data.id)});
 
         tdFour.textContent = data.name;
         tdFive.textContent = data.course;
