@@ -1,29 +1,34 @@
 class GradeTable{
-  constructor(tableElement){
+  constructor(tableElement, noGradesElement){
     this.tableElement = tableElement;
+    this.noGradesElement = noGradesElement;
   }
   updateGrades(grades){
     console.log(grades);
-    var tbody = document.querySelector("tbody");
+    // var tbody = document.querySelector("tbody");
 
-    while(tbody.firstChild){
-      tbody.removeChild(tbody.firstChild);
-    }
+    // while(tbody.firstChild){
+    //   tbody.removeChild(tbody.firstChild);
+    // }
 
-    for(var index = 0; index < grades.length; index++){
+    // for(var index = 0; index < grades.length; index++){
 
-      var tr = document.createElement("tr");
-      var tdOne = document.createElement("td");
-      var tdTwo = document.createElement("td");
-      var tdThree = document.createElement("td");
+    //   var tr = document.createElement("tr");
+    //   var tdOne = document.createElement("td");
+    //   var tdTwo = document.createElement("td");
+    //   var tdThree = document.createElement("td");
 
-      tdOne.textContent = grades[index].name;
-      tdTwo.textContent = grades[index].course;
-      tdThree.textContent = grades[index].grade;
+    //   tdOne.textContent = grades[index].name;
+    //   tdTwo.textContent = grades[index].course;
+    //   tdThree.textContent = grades[index].grade;
 
-      tr.append(tdOne, tdTwo, tdThree)
-      tbody.appendChild(tr);
-    }
+    //   tr.append(tdOne, tdTwo, tdThree)
+    //   tbody.appendChild(tr);
+    // }
+
+    this.renderGradeRow();
+    this.deleteGrade()
+
   }
   onDeleteClick(deleteGrade){
     this.deleteGrade;
