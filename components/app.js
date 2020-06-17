@@ -10,6 +10,7 @@ class App{
     console.error("nope");
   }
   handleGetGradesSuccess(grades){
+    // this.getGrades();
     console.log("yes")
     this.gradeTable.updateGrades(grades)
 
@@ -18,11 +19,12 @@ class App{
 
     for(var indexGrades = 0; indexGrades < grades.length; indexGrades++){
       sumOfGrades += grades[indexGrades].grade;
-
     }
     results = sumOfGrades/grades.length;
 
     this.pageHeader.updateAverage(results);
+
+    this.getGrades();
   }
 
   getGrades(){
@@ -38,5 +40,10 @@ class App{
   }
   start(){
     this.getGrades();
+  }
+  createGrade(name, course, grade){
+    console.log(name);
+    console.log(course);
+    console.log(grade);
   }
 }
