@@ -1,5 +1,7 @@
+var noGradesRecorded = document.querySelector("p");
+
 var formElement = document.querySelector("form")
-var gradeFormNew = new GradeForm(formElement);
+var gradeFormNew = new GradeForm(formElement, noGradesRecorded);
 
 var header = document.querySelector("header");
 var pageHeaderNew = new PageHeader(header);
