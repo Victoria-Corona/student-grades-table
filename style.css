@@ -1,0 +1,21 @@
+@media only screen and (max-width: 500px){
+.rowOneMedia, .rowTwoMedia {
+    display: flex;
+    flex-direction: column;
+}
+
+  .rowOneMedia {
+    text-align: center;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .rowTwoMedia {
+    align-content: center;
+    /* min-width: 90%; */
+  }
+
+  .formMedia {
+    min-width: 70%;
+  }
+}

@@ -2,13 +2,17 @@
 <html>
   <head>
     <title>Student Grade Table</title>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   </head>
   <body>
     <header>
-      <div class="row">
-        <div class="col-8">
+      <div class="row rowOneMedia">
+        <div class="col-8 hMedia">
           <h1>Student Grade Table</h1>
         </div>
         <div class="col-4">
@@ -18,9 +22,9 @@
 
     </header>
     <main>
-      <div class="row">
+      <div class="row rowTwoMedia">
       <div class="col-8">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered tableMedia">
           <thead class="thead-dark">
             <tr>
             <th>Student Name</th>
@@ -35,7 +39,7 @@
         <p class="d-none">No Grades Recorded</p>
       </div>
 
-      <form class="col-4">
+      <form class="col-4 formMedia">
         <div class="col-auto">
           <label class="sr-only" for="name">Student Name</label>
           <div class="input-group mb-2">
