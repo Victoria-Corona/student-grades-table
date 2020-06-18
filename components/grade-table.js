@@ -12,19 +12,7 @@ class GradeTable{
     }
 
     for(var index = 0; index < grades.length; index++){
-
-      // var tr = document.createElement("tr");
-      // var tdOne = document.createElement("td");
-      // var tdTwo = document.createElement("td");
-      // var tdThree = document.createElement("td");
-
-      // tdOne.textContent = grades[index].name;
-      // tdTwo.textContent = grades[index].course;
-      // tdThree.textContent = grades[index].grade;
-
-      // tr.append(tdOne, tdTwo, tdThree)
-      // tbody.appendChild(tr);
-      this.renderGradeRow(grades[index], this.deleteGrade);
+      this.renderGradeRow(grades[index], this.deleteGrade, this.editGrade);
     }
     var pHidden = document.querySelector("p");
     if(grades.length === 0){
@@ -37,7 +25,13 @@ class GradeTable{
   onDeleteClick(deleteGrade){
     this.deleteGrade = deleteGrade;
   }
-  renderGradeRow(data, deleteGrade){
+
+  onEditClick(editGrade) {
+    this.editGrade = editGrade;
+    //passing an entire function from App to over here for that v to use
+  }
+
+  renderGradeRow(data, deleteGrade, editGrade){
         var tbodyTwo = document.querySelector("tbody");
         var trTwo = document.createElement("tr")
         var tdFour = document.createElement("td");
@@ -51,10 +45,16 @@ class GradeTable{
         deleteButton.addEventListener("click", function(){
         deleteGrade(data.id)});
 
+        var editButton = document.createElement("button");
+        editButton.textContent = "EDIT";
+        editButton.classList.add("btn", "btn-primary")
+        editButton.addEventListener("click", function(){
+        editGrade(data.id, data.name, data.course, data.grade)});
+
         tdFour.textContent = data.name;
         tdFive.textContent = data.course;
         tdSix.textContent = data.grade;
-        tdSeven.append(deleteButton);
+        tdSeven.append(deleteButton, editButton);
 
         trTwo.append(tdFour, tdFive, tdSix, tdSeven);
         tbodyTwo.append(trTwo);
