@@ -25,8 +25,12 @@ class App{
     for(var indexGrades = 0; indexGrades < grades.length; indexGrades++){
       sumOfGrades += grades[indexGrades].grade;
     }
-    results = sumOfGrades/grades.length;
 
+    results = Math.floor(sumOfGrades/grades.length);
+
+    if (grades.length === 0) {
+          results = "N/A";
+        }
     this.pageHeader.updateAverage(results);
   }
 

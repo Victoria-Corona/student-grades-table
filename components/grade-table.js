@@ -29,6 +29,8 @@ class GradeTable{
     var pHidden = document.querySelector("p");
     if(grades.length === 0){
       pHidden.classList.remove("d-none")
+    } else {
+      pHidden.classList.add("d-none");
     }
     console.log(grades);
   }
