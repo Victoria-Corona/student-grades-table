@@ -22,10 +22,10 @@ class App{
     console.log("yes", grades)
     this.gradeTable.updateGrades(grades)
 
-    var sumOfGrades = 0;
-    var results = null;
+    let sumOfGrades = 0;
+    let results = null;
 
-    for(var indexGrades = 0; indexGrades < grades.length; indexGrades++){
+    for(let indexGrades = 0; indexGrades < grades.length; indexGrades++){
       sumOfGrades += grades[indexGrades].grade;
     }
 
