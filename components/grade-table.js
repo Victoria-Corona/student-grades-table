@@ -42,13 +42,13 @@ class GradeTable{
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "DELETE";
     deleteButton.classList.add("btn", "btn-danger");
-    deleteButton.addEventListener("click", function(){
+    deleteButton.addEventListener("click", () => {
     deleteGrade(data.id)});
 
     const editButton = document.createElement("button");
     editButton.textContent = "EDIT";
     editButton.classList.add("btn", "btn-primary")
-    editButton.addEventListener("click", function(){
+    editButton.addEventListener("click", () => {
     editGrade(data.id, data.name, data.course, data.grade)});
 
     tdFour.textContent = data.name;
