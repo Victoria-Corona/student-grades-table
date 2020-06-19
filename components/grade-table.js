@@ -5,28 +5,16 @@ class GradeTable{
   }
   updateGrades(grades){
     console.log(grades);
-    var tbody = document.querySelector("tbody");
+    const tbody = document.querySelector("tbody");
 
     while(tbody.firstChild){
       tbody.removeChild(tbody.firstChild);
     }
 
-    for(var index = 0; index < grades.length; index++){
-
-      // var tr = document.createElement("tr");
-      // var tdOne = document.createElement("td");
-      // var tdTwo = document.createElement("td");
-      // var tdThree = document.createElement("td");
-
-      // tdOne.textContent = grades[index].name;
-      // tdTwo.textContent = grades[index].course;
-      // tdThree.textContent = grades[index].grade;
-
-      // tr.append(tdOne, tdTwo, tdThree)
-      // tbody.appendChild(tr);
-      this.renderGradeRow(grades[index], this.deleteGrade);
+    for(let index = 0; index < grades.length; index++){
+      this.renderGradeRow(grades[index], this.deleteGrade, this.editGrade);
     }
-    var pHidden = document.querySelector("p");
+    const pHidden = document.querySelector("p");
     if(grades.length === 0){
       pHidden.classList.remove("d-none")
     } else {
@@ -37,26 +25,38 @@ class GradeTable{
   onDeleteClick(deleteGrade){
     this.deleteGrade = deleteGrade;
   }
-  renderGradeRow(data, deleteGrade){
-        var tbodyTwo = document.querySelector("tbody");
-        var trTwo = document.createElement("tr")
-        var tdFour = document.createElement("td");
-        var tdFive = document.createElement("td");
-        var tdSix = document.createElement("td");
-        var tdSeven = document.createElement("td");
 
-        var deleteButton = document.createElement("button");
-        deleteButton.textContent = "DELETE";
-        deleteButton.classList.add("btn", "btn-danger");
-        deleteButton.addEventListener("click", function(){
-        deleteGrade(data.id)});
+  onEditClick(editGrade) {
+    this.editGrade = editGrade;
+    //passing an entire function from App to over here for that v to use
+  }
 
-        tdFour.textContent = data.name;
-        tdFive.textContent = data.course;
-        tdSix.textContent = data.grade;
-        tdSeven.append(deleteButton);
+  renderGradeRow(data, deleteGrade, editGrade){
+    const tbodyTwo = document.querySelector("tbody");
+    const trTwo = document.createElement("tr")
+    const tdFour = document.createElement("td");
+    const tdFive = document.createElement("td");
+    const tdSix = document.createElement("td");
+    const tdSeven = document.createElement("td");
 
-        trTwo.append(tdFour, tdFive, tdSix, tdSeven);
-        tbodyTwo.append(trTwo);
-      }
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "DELETE";
+    deleteButton.classList.add("btn", "btn-danger");
+    deleteButton.addEventListener("click", () => {
+    deleteGrade(data.id)});
+
+    const editButton = document.createElement("button");
+    editButton.textContent = "EDIT";
+    editButton.classList.add("btn", "btn-primary")
+    editButton.addEventListener("click", () => {
+    editGrade(data.id, data.name, data.course, data.grade)});
+
+    tdFour.textContent = data.name;
+    tdFive.textContent = data.course;
+    tdSix.textContent = data.grade;
+    tdSeven.append(deleteButton, editButton);
+
+    trTwo.append(tdFour, tdFive, tdSix, tdSeven);
+    tbodyTwo.append(trTwo);
+  }
 }

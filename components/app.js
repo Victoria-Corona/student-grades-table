@@ -11,6 +11,9 @@ class App{
     this.deleteGrade = this.deleteGrade.bind(this);
     this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
     this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
+    this.editGrade = this.editGrade.bind(this);
+    this.handleEditGradeError = this.handleEditGradeError.bind(this);
+    this.handleEditGradeSuccess = this.handleEditGradeSuccess.bind(this);
   }
   handleGetGradesError(error){
     console.error("nope", error);
@@ -19,10 +22,10 @@ class App{
     console.log("yes", grades)
     this.gradeTable.updateGrades(grades)
 
-    var sumOfGrades = 0;
-    var results = null;
+    let sumOfGrades = 0;
+    let results = null;
 
-    for(var indexGrades = 0; indexGrades < grades.length; indexGrades++){
+    for(let indexGrades = 0; indexGrades < grades.length; indexGrades++){
       sumOfGrades += grades[indexGrades].grade;
     }
 
@@ -31,6 +34,7 @@ class App{
     if (grades.length === 0) {
           results = "N/A";
         }
+
     this.pageHeader.updateAverage(results);
   }
 
@@ -48,7 +52,8 @@ class App{
   start(){
     this.getGrades();
     this.gradeForm.onSubmit(this.createGrade);
-    this.gradeTable.onDeleteClick(this.deleteGrade)
+    this.gradeTable.onDeleteClick(this.deleteGrade);
+    this.gradeTable.onEditClick(this.editGrade);
   }
   createGrade(name, course, grade){
     console.log(name, course, grade);
@@ -89,6 +94,29 @@ class App{
     console.error();
   }
   handleDeleteGradeSuccess(){
+    this.getGrades();
+  }
+  editGrade(id, name, course, grade){
+    console.log(name, course, grade);
+    $.ajax({
+      method: "PATCH",
+      url: "https://sgt.lfzprototypes.com/api/grades/" + id,
+      data: {
+        "name": name,
+        "course": course,
+        "grade": grade
+      },
+      headers: {
+        "X-Access-Token": "Dcw6eCfN",
+      },
+      success: this.handleEditGradeSuccess,
+      error: this.handleEditGradeError
+    })
+  }
+  handleEditGradeError(error){
+    console.error();
+  }
+  handleEditGradeSuccess(){
     this.getGrades();
   }
 }

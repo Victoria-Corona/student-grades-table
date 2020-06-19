@@ -10,10 +10,10 @@ class GradeForm{
   handleSubmit(event){
     event.preventDefault();
     console.log("hiya");
-    var formData = new FormData(event.target);
-    var studentName = formData.get("name");
-    var studentCourse = formData.get("course");
-    var studentGrade = formData.get("grade");
+    const formData = new FormData(event.target);
+    const studentName = formData.get("name");
+    const studentCourse = formData.get("course");
+    const studentGrade = formData.get("grade");
     this.createGrade(studentName, studentCourse, studentGrade);
     event.target.reset();
   }

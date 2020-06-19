@@ -1,13 +1,13 @@
-var noGradesRecorded = document.querySelector("p");
+const noGradesRecorded = document.querySelector("p");
 
-var formElement = document.querySelector("form")
-var gradeFormNew = new GradeForm(formElement, noGradesRecorded);
+const formElement = document.querySelector("form")
+const gradeFormNew = new GradeForm(formElement, noGradesRecorded);
 
-var header = document.querySelector("header");
-var pageHeaderNew = new PageHeader(header);
+const header = document.querySelector("header");
+const pageHeaderNew = new PageHeader(header);
 
-var tableElement = document.querySelector("table");
-var gradeTable = new GradeTable(tableElement);
+const tableElement = document.querySelector("table");
+const gradeTable = new GradeTable(tableElement);
 
-var app = new App(gradeTable, pageHeaderNew, gradeFormNew);
+const app = new App(gradeTable, pageHeaderNew, gradeFormNew);
 app.start();
